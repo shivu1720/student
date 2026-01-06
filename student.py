@@ -1,55 +1,54 @@
-def show_grade_criteria():
-    print("--- Grade Criteria ---")
-    print("90 - 100 : Grade S")
-    print("80 - 89  : Grade A")
-    print("65 - 79  : Grade B")
-    print("50 - 64  : Grade C")
-    print("40 - 49  : Grade D")
-    print("Below 40 : Grade F")
-    print("----------------------\n")
-
-
-def show_student_details():
-    print("--- Student Details ---")
-    print("Name: shivu")
-    print("Department: BCA")
-    print("Semester: 3\n")
-
-
-def show_subject_marks():
-    print("--- Subject Marks ---")
-    print("Subject 1: 85")
-    print("Subject 2: 90")
-    print("Subject 3: 95\n")
-
-
-def calculate_average():
-    return (85 + 90 + 95) / 3
-
-
+import sys
 def calculate_grade(avg):
-    if avg >= 90:
+    if 90 <= avg <= 100:
         return "S"
-    elif avg >= 80:
+    elif 80 <= avg < 90:
         return "A"
-    elif avg >= 65:
+    elif 65 <= avg < 80:
         return "B"
-    elif avg >= 50:
+    elif 50 <= avg < 65:
         return "C"
-    elif avg >= 40:
+    elif 40 <= avg < 50:
         return "D"
     else:
         return "F"
 
+def print_grade_table():
+    print("===== GRADING CRITERIA =====")
+    print("+------------+---------+")
+    print("| Marks (%)  | Grade   |")
+    print("+------------+---------+")
+    print("| 90 - 100   |   S     |")
+    print("| 80 - 89    |   A     |")
+    print("| 65 - 79    |   B     |")
+    print("| 50 - 64    |   C     |")
+    print("| 40 - 49    |   D     |")
+    print("| Below 40   |   F     |")
+    print("+------------+---------+")
 
 def main():
-    show_grade_criteria()
-    show_student_details()
-    show_subject_marks()
-    avg = calculate_average()
-    print(f"Average Marks: {avg}")
-    print(f"Final Grade: {calculate_grade(avg)}")
+    if len(sys.argv) != 7:
+        print("Usage: python Student.py <name> <department> <semester> <m1> <m2> <m3>")
+        sys.exit(1)
 
+    name = sys.argv[1]
+    department = sys.argv[2]
+    semester = sys.argv[3]
+    marks1 = int(sys.argv[4])
+    marks2 = int(sys.argv[5])
+    marks3 = int(sys.argv[6])
+
+    average = (marks1 + marks2 + marks3) / 3
+    grade = calculate_grade(average)
+
+    print_grade_table()
+
+    print("\n===== STUDENT DETAILS =====")
+    print(f"Name       : {name}")
+    print(f"Department : {department}")
+    print(f"Semester   : {semester}")
+    print(f"Average    : {average:.2f}")
+    print(f"Grade      : {grade}")
 
 if __name__ == "__main__":
     main()
