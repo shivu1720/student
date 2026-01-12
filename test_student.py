@@ -71,8 +71,8 @@ class TestStudentGrade(unittest.TestCase):
     def test_main_output(self):
         test_args = [
             "student.py",
-            "Shivu M",
-            "ICA",
+            "Basavaraj G H",
+            "BCA",
             "3",
             "85",
             "78",
@@ -90,8 +90,8 @@ class TestStudentGrade(unittest.TestCase):
 
             self.assertIn("GRADING CRITERIA", output)
             self.assertIn("STUDENT DETAILS", output)
-            self.assertIn("Name       : Shivu M", output)
-            self.assertIn("Department : ICA", output)
+            self.assertIn("Name       : Basavaraj G H", output)
+            self.assertIn("Department : BCA", output)
             self.assertIn("Semester   : 3", output)
             self.assertIn("Average    : 84.33", output)
             self.assertIn("Grade      : A", output)
